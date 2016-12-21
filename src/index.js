@@ -3,7 +3,6 @@ const ENV_FILE_PATH = process.env.ENV_FILE_PATH || '../../../.env.json';
 
 const _ = require('lodash');
 const iterator = require('object-recursive-iterator');
-const extend = require('deep-extend');
 const path = require('path');
 const isJSON = require('is-json');
 
@@ -44,6 +43,6 @@ function applyEnvFile(envFilePath) {
 
 function mergeConfigs(defaultConfig, productionConfig) {
   return process.env.NODE_ENV === 'production' ?
-    extend(defaultConfig, productionConfig) :
+    Object.assign({}, defaultConfig, productionConfig) :
     defaultConfig;
 }

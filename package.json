@@ -1,6 +1,6 @@
 {
   "name": "smart-config",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Smartly manage your config.",
   "main": "dist/index.js",
   "author": "kozzztya",
@@ -11,7 +11,6 @@
     "test": "ava -v test/"
   },
   "dependencies": {
-    "deep-extend": "^0.4.1",
     "is-json": "^2.0.1",
     "lodash": "^4.16.3",
     "object-recursive-iterator": "^1.0.2"
