@@ -1,3 +1,5 @@
+const debug = require('debug')('config');
+
 const CONFIG_DIR_PATH = process.env.CONFIG_DIR_PATH || '../../../config';
 const ENV_FILE_PATH = process.env.ENV_FILE_PATH || '../../../.env.json';
 
@@ -38,11 +40,15 @@ function applyEnvFile(envFilePath) {
       process.env[envName] = value;
     })
   } catch (err) {
+    // No env file. It's okay.
   }
 }
 
 function mergeConfigs(defaultConfig, productionConfig) {
-  return process.env.NODE_ENV === 'production' ?
+  const config = process.env.NODE_ENV === 'production' ?
     Object.assign({}, defaultConfig, productionConfig) :
     defaultConfig;
+
+  debug(config);
+  return config;
 }
