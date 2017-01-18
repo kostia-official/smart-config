@@ -1,6 +1,6 @@
 {
   "name": "smart-config",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Smartly manage your config.",
   "main": "dist/index.js",
   "author": "kozzztya",
