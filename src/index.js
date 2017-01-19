@@ -14,7 +14,7 @@ const defaultConfig = resolveConfig(path.join(CONFIG_DIR_PATH, 'default.json'));
 const productionConfig = resolveConfig(path.join(CONFIG_DIR_PATH, 'production.json'));
 const resultConfig = mergeConfigs(defaultConfig, productionConfig);
 
-module.exports = { get, ...resultConfig };
+module.exports = _.assign({ get }, resultConfig);
 
 function get(config) {
   return _.get(resultConfig, config);
@@ -46,7 +46,7 @@ function applyEnvFile(envFilePath) {
 
 function mergeConfigs(defaultConfig, productionConfig) {
   const config = process.env.NODE_ENV === 'production' ?
-    Object.assign({}, defaultConfig, productionConfig) :
+    _.assign({}, defaultConfig, productionConfig) :
     defaultConfig;
 
   debug(config);
