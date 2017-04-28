@@ -14,10 +14,14 @@ const defaultConfig = resolveConfig(path.join(CONFIG_DIR_PATH, 'default.json'));
 const productionConfig = resolveConfig(path.join(CONFIG_DIR_PATH, 'production.json'));
 const resultConfig = mergeConfigs(defaultConfig, productionConfig);
 
-module.exports = _.assign({ get }, resultConfig);
+module.exports = _.assign({ get, set }, resultConfig);
 
 function get(config) {
   return _.get(resultConfig, config);
+}
+
+function set(path, value) {
+  return _.set(resultConfig, path, value);
 }
 
 function resolveConfig(configPath) {
